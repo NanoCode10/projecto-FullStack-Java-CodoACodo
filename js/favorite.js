@@ -19,36 +19,40 @@ let conterListFavoritesGlobal = null;
 let listFavoritesGlobal = null;
 
 function getBtnsFavorite() {
+  // console.log(3);
   return new Promise((resolve, reject) => {
-    document.addEventListener("nftsLoaded", () => {
-      const btnsFavorite = document.querySelectorAll(
-        "#card-poster .card-body .btn-favorite"
-      );
-      const cardNfts = document.querySelectorAll("#card-poster .card-nfts");
+    /*  document.addEventListener("nftsLoaded", () => { */
+    const btnsFavorite = document.querySelectorAll(
+      "#card-poster .card-body .btn-favorite"
+    );
+    const cardNfts = document.querySelectorAll("#card-poster .card-nfts");
+    // console.log(cardNfts);
+    const conterListFavorites = document.querySelector(
+      ".container-list-favorites"
+    );
 
-      const conterListFavorites = document.querySelector(
-        ".container-list-favorites"
-      );
+    const listFavorites = document.querySelector(".list-favorites");
 
-      const listFavorites = document.querySelector(".list-favorites");
+    //console.log(listFavorites)
 
-      cardNftsGlobal = cardNfts;
-      btnsFavoriteGlobal = btnsFavorite;
-      listFavoritesGlobal = listFavorites;
-      conterListFavoritesGlobal = conterListFavorites;
+    cardNftsGlobal = cardNfts;
+    btnsFavoriteGlobal = btnsFavorite;
+    listFavoritesGlobal = listFavorites;
+    conterListFavoritesGlobal = conterListFavorites;
 
-      resolve(
-        btnsFavoriteGlobal,
-        cardNftsGlobal,
-        listFavoritesGlobal,
-        conterListFavoritesGlobal
-      );
-    });
+    resolve(
+      btnsFavoriteGlobal,
+      cardNftsGlobal,
+      listFavoritesGlobal,
+      conterListFavoritesGlobal
+    );
   });
+  /* });*/
 }
 
 const toggleFavorite = (nft) => {
   const index = favorites.findIndex((favorite) => favorite.id === nft.id);
+
   if (index === -1) {
     favorites.push(nft);
   } else {
@@ -61,7 +65,7 @@ const toggleFavorite = (nft) => {
 
 const updateFavoriteMenu = () => {
   listFavoritesGlobal.innerHTML = "";
-  console.log(favorites);
+  // console.log(favorites);
   favorites.forEach((fav) => {
     // Crear un nuevo elemento 'div' para el producto favorito
     const favoriteCard = document.createElement("div");
@@ -103,36 +107,56 @@ const showHTML = () => {
   });
 };
 
-async function main() {
-  await getBtnsFavorite();
+export async function favoriteMain(event) {
+  try {
+    await getBtnsFavorite();
 
-  btnsFavoriteGlobal.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      const card = e.target.closest(".card-body");
+    console.log(event);
+    // Verificar si el elemento clickeado es un botón favorito
+    const btn = event.target.closest(".btn-favorite");
+    if (btn) {
+      console.log(btn);
+      const card = btn.closest(".card-body");
 
+      console.log(card);
       const nft = {
         id: card.dataset.productId,
         title: card.querySelector(".card-title").textContent,
         price: card.querySelector(".card-price").textContent,
       };
-
       toggleFavorite(nft);
-
       showHTML();
+    }
+
+    /*fav.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        
+        const card = e.target.closest(".card-body");
+        //console.log(card)
+        const nft = {
+          id: card.dataset.productId,
+          title: card.querySelector(".card-title").textContent,
+          price: card.querySelector(".card-price").textContent,
+        };
+
+        toggleFavorite(nft);
+
+        showHTML();
+      });
+    });*/
+
+    const btnClose = document.querySelector("#btn-close");
+    btnClose.addEventListener("click", () => {
+      conterListFavoritesGlobal.classList.remove("show");
     });
-  });
 
-  const btnClose = document.querySelector("#btn-close");
-  btnClose.addEventListener("click", () => {
-    conterListFavoritesGlobal.classList.remove("show");
-  });
+    const btnFavorite = document.querySelector(".btn-favorite");
+    btnFavorite.addEventListener("click", () => {
+      conterListFavoritesGlobal.classList.add("show");
+    });
 
-  const btnFavorite = document.querySelector(".btn-favorite");
-  btnFavorite.addEventListener("click", () => {
-    conterListFavoritesGlobal.classList.add("show");
-  });
-
-  loadFavoritesFromLocalStorage();
+    loadFavoritesFromLocalStorage();
+  } catch (error) {
+    console.error("An error occurred in favoriteMain:", error);
+  }
 }
-
-main();
