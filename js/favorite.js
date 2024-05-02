@@ -21,7 +21,6 @@ let listFavoritesGlobal = null;
 function getBtnsFavorite() {
   // console.log(3);
   return new Promise((resolve, reject) => {
-    /*  document.addEventListener("nftsLoaded", () => { */
     const btnsFavorite = document.querySelectorAll(
       "#card-poster .card-body .btn-favorite"
     );
@@ -111,14 +110,14 @@ export async function favoriteMain(event) {
   try {
     await getBtnsFavorite();
 
-    console.log(event);
+    // console.log(event);
     // Verificar si el elemento clickeado es un botón favorito
     const btn = event.target.closest(".btn-favorite");
     if (btn) {
-      console.log(btn);
+      //   console.log(btn);
       const card = btn.closest(".card-body");
 
-      console.log(card);
+      //   console.log(card);
       const nft = {
         id: card.dataset.productId,
         title: card.querySelector(".card-title").textContent,
@@ -127,24 +126,6 @@ export async function favoriteMain(event) {
       toggleFavorite(nft);
       showHTML();
     }
-
-    /*fav.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        
-        const card = e.target.closest(".card-body");
-        //console.log(card)
-        const nft = {
-          id: card.dataset.productId,
-          title: card.querySelector(".card-title").textContent,
-          price: card.querySelector(".card-price").textContent,
-        };
-
-        toggleFavorite(nft);
-
-        showHTML();
-      });
-    });*/
-
     const btnClose = document.querySelector("#btn-close");
     btnClose.addEventListener("click", () => {
       conterListFavoritesGlobal.classList.remove("show");

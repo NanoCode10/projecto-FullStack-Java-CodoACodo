@@ -1,5 +1,3 @@
-import { favoriteMain } from "./favorite.js";
-
 export const displayNfts = (arrayNfts) => {
   const cardPosterElement = document.getElementById("card-poster");
   cardPosterElement.innerHTML = ""; // Vaciar el contenedor antes de agregar nuevos elementos

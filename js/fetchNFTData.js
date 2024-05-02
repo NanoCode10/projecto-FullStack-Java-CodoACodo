@@ -29,9 +29,7 @@ export async function fetchNFTData() {
               console.error(err);
        } finally {
               document.getElementById("spinner").style.display = "none";
-              // Emitir un evento personalizado después de que los datos se han cargado y agregado al DOM
-           //   document.dispatchEvent(new CustomEvent("nftsLoaded"));
-              
+                        
        }
       
   }
