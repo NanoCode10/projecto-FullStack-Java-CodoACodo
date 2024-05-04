@@ -145,6 +145,7 @@ export const favoritesIsLoad = async () => {
   await getBtnsFavorite();
 
   btnsFavoriteGlobal.forEach((btn) => {
+    console.log(btn);
     btn.addEventListener("click", (e) => {
       const card = e.target.closest(".card-body");
 

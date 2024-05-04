@@ -1,4 +1,4 @@
-//import { favoriteMain, favoritesIsLoad } from "./favorite.js";
+import { favoritesIsLoad } from "./favorite.js";
 import { displayNfts } from "./funciones.js";
 
 let arrayNftsGlobal = null;
@@ -17,23 +17,14 @@ const handleSearch = () => {
   //console.log(filteredNfts);
 
   displayNfts(filteredNfts);
-  //favoritesIsLoad()
-
-  
- // camptura el click y llama a la funcion favorite
- // document.getElementById("card-poster").addEventListener("click", favoriteMain);
-  console.log(1)
-  
+  favoritesIsLoad();
 };
 export const buscardorNfts = async (arrayNfts) => {
-
   try {
     arrayNftsGlobal = arrayNfts;
 
     searchInput.addEventListener("input", handleSearch);
-
   } catch (error) {
     console.error("Error fetching NFT data:", error);
   }
-
 };
