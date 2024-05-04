@@ -96,51 +96,6 @@ const showHTML = () => {
   });
 };
 
-export const favoriteMain = async (event = null) => {
-  try {
-    await getBtnsFavorite();
-
-    // console.log(event);
-    // Verificar si el elemento clickeado es un botón favorito
-    if (event === null) {
-      btnsFavoriteGlobal.forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          const card = e.target.closest(".card-body");
-
-          const nft = {
-            id: card.dataset.productId,
-            title: card.querySelector(".card-title").textContent,
-            price: card.querySelector(".card-price").textContent,
-          };
-
-          toggleFavorite(nft);
-
-          showHTML();
-        });
-      });
-    } else {
-      const btn = event.target.closest(".btn-favorite");
-      if (btn) {
-        //  console.log(btn);
-        const card = btn.closest(".card-body");
-
-        //   console.log(card);
-        const nft = {
-          id: card.dataset.productId,
-          title: card.querySelector(".card-title").textContent,
-          price: card.querySelector(".card-price").textContent,
-        };
-        toggleFavorite(nft);
-        showHTML();
-      }
-    }
-
-    loadFavoritesFromLocalStorage();
-  } catch (error) {
-    console.error("An error occurred in favoriteMain:", error);
-  }
-};
-
 export const favoritesIsLoad = async () => {
   await getBtnsFavorite();
 

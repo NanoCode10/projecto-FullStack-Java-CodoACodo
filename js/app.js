@@ -2,15 +2,10 @@ import { fetchNFTData } from "./fetchNFTData.js";
 
 import { btnUp } from "./btnUp.js";
 import { buscardorNfts } from "./buscardor.js";
-import { favoriteMain, favoritesIsLoad } from "./favorite.js";
+import { favoritesIsLoad } from "./favorite.js";
 
 // Mostrar el spinner antes de hacer la llamada fetch
 document.getElementById("spinner").style.display = "block";
-
-// camptura el click y llama a la funcion favorite
-//const btncardPoster = document.getElementById("card-poster");
-
-//btncardPoster.addEventListener("click", favoriteMain);
 
 // mi fechin de datos
 fetchNFTData()
@@ -18,7 +13,7 @@ fetchNFTData()
     //buscador de NFTs
     buscardorNfts(arrayNfts).then(() => {
       //cargar el favorite
-      //console.log(1)
+
       favoritesIsLoad();
     });
   })
