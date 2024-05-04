@@ -15,7 +15,6 @@ const loadFavoritesFromLocalStorage = () => {
 
 let btnsFavoriteGlobal = null;
 let cardNftsGlobal = null;
-let conterListFavoritesGlobal = null;
 let listFavoritesGlobal = null;
 
 function getBtnsFavorite() {
@@ -26,9 +25,6 @@ function getBtnsFavorite() {
     );
     const cardNfts = document.querySelectorAll("#card-poster .card-nfts");
     // console.log(cardNfts);
-    const conterListFavorites = document.querySelector(
-      ".container-list-favorites"
-    );
 
     const listFavorites = document.querySelector(".list-favorites");
 
@@ -37,21 +33,15 @@ function getBtnsFavorite() {
     cardNftsGlobal = cardNfts;
     btnsFavoriteGlobal = btnsFavorite;
     listFavoritesGlobal = listFavorites;
-    conterListFavoritesGlobal = conterListFavorites;
 
-    resolve(
-      btnsFavoriteGlobal,
-      cardNftsGlobal,
-      listFavoritesGlobal,
-      conterListFavoritesGlobal
-    );
+    resolve(btnsFavoriteGlobal, cardNftsGlobal, listFavoritesGlobal);
   });
   /* });*/
 }
 
 const toggleFavorite = (nft) => {
   const index = favorites.findIndex((favorite) => favorite.id === nft.id);
-
+  // console.log(favorites);
   if (index === -1) {
     favorites.push(nft);
   } else {
@@ -106,38 +96,69 @@ const showHTML = () => {
   });
 };
 
-export async function favoriteMain(event) {
+export const favoriteMain = async (event = null) => {
   try {
     await getBtnsFavorite();
 
     // console.log(event);
     // Verificar si el elemento clickeado es un botón favorito
-    const btn = event.target.closest(".btn-favorite");
-    if (btn) {
-      //   console.log(btn);
-      const card = btn.closest(".card-body");
+    if (event === null) {
+      btnsFavoriteGlobal.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const card = e.target.closest(".card-body");
 
-      //   console.log(card);
-      const nft = {
-        id: card.dataset.productId,
-        title: card.querySelector(".card-title").textContent,
-        price: card.querySelector(".card-price").textContent,
-      };
-      toggleFavorite(nft);
-      showHTML();
+          const nft = {
+            id: card.dataset.productId,
+            title: card.querySelector(".card-title").textContent,
+            price: card.querySelector(".card-price").textContent,
+          };
+
+          toggleFavorite(nft);
+
+          showHTML();
+        });
+      });
+    } else {
+      const btn = event.target.closest(".btn-favorite");
+      if (btn) {
+        //  console.log(btn);
+        const card = btn.closest(".card-body");
+
+        //   console.log(card);
+        const nft = {
+          id: card.dataset.productId,
+          title: card.querySelector(".card-title").textContent,
+          price: card.querySelector(".card-price").textContent,
+        };
+        toggleFavorite(nft);
+        showHTML();
+      }
     }
-    const btnClose = document.querySelector("#btn-close");
-    btnClose.addEventListener("click", () => {
-      conterListFavoritesGlobal.classList.remove("show");
-    });
-
-    const btnFavorite = document.querySelector(".btn-favorite");
-    btnFavorite.addEventListener("click", () => {
-      conterListFavoritesGlobal.classList.add("show");
-    });
 
     loadFavoritesFromLocalStorage();
   } catch (error) {
     console.error("An error occurred in favoriteMain:", error);
   }
-}
+};
+
+export const favoritesIsLoad = async () => {
+  await getBtnsFavorite();
+
+  btnsFavoriteGlobal.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const card = e.target.closest(".card-body");
+
+      const nft = {
+        id: card.dataset.productId,
+        title: card.querySelector(".card-title").textContent,
+        price: card.querySelector(".card-price").textContent,
+      };
+
+      toggleFavorite(nft);
+
+      showHTML();
+    });
+  });
+
+  loadFavoritesFromLocalStorage();
+};
