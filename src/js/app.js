@@ -1,8 +1,8 @@
-import { fetchNFTData } from "./fetchNFTData.js";
+import { fetchNFTData } from "..js/components/fetchNFTData.js";
 
-import { btnUp } from "./btnUp.js";
-import { buscardorNfts } from "./buscardor.js";
-import { favoritesIsLoad } from "./favorite.js";
+import { btnUp } from "./components/btnUp.js";
+import { buscardorNfts } from "./components/buscardor.js";
+import { favoritesIsLoad } from "./components/favorite.js";
 
 // Mostrar el spinner antes de hacer la llamada fetch
 document.getElementById("spinner").style.display = "block";

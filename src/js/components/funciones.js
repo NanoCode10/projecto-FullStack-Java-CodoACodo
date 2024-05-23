@@ -11,6 +11,7 @@ export const displayNfts = (arrayNfts) => {
     if (name === "My New Collection" || name === "GROOKS" || image === "") {
       return;
     }
+
     // Generar un precio aleatorio para cada NFT
     const priceAleatorio = Math.round((Math.random() * 9 + 1) * 10) / 10;
 
