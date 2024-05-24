@@ -65,7 +65,7 @@
         <label for="login_field">Nombre</label>
         <input
           type="text"
-          name="login"
+          name="name"
           id="name_field"
           tabindex="1"
           required
@@ -73,7 +73,7 @@
         <label for="login_field">Apellido</label>
         <input
           type="text"
-          name="login"
+          name="apellido"
           id="apellido_field"
           tabindex="1"
           required
@@ -81,7 +81,7 @@
         <label for="login_field">Correo Electrônico</label>
         <input
           type="email"
-          name="login"
+          name="email"
           id="email_field"
           tabindex="1"
           required
@@ -89,14 +89,12 @@
         <label for="password_field">Contraseña</label>
         <input
           type="password"
-          name="login"
+          name="password"
           id="pass_field"
           tabindex="1"
           pattern=".{8,}"
           required
         />
-        <label class="date" for="date_field">Fecha de Nacimiento</label>
-        <input type="date" name="date" id="date" tabindex="1" required />
 
         <label class="check pb-3" for="check_field">
           <input id="checkbox" type="checkbox" required /> Acepto los
@@ -111,8 +109,10 @@
           class="btn btn-primary"
         />
       </form>
+      <p id="error-message" class="error-message"></p>
 
-      <div class="footer"></div>
+
+      
     </main>
 
     <!-- codigo javascript propio -->
