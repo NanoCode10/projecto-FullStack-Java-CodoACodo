@@ -50,7 +50,7 @@
               <a class="nav-link btn-favorite" href="#">Favoritos </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" >Mariano Arenas<img src="../../data/icon/icon_nano.svg" alt="" width="30" height="25" class="d-inline-block align-text-top">
+              <a class="nav-link" id="username"  >Mariano Arenas<img src="../../data/icon/icon_nano.svg" alt="" width="30" height="25" class="d-inline-block align-text-top">
               </a>
             </li>
           </ul>
@@ -82,112 +82,6 @@
 
   <main id="main">
 
-
-    <!-- codigo Modal ventas -->
-    <section class="modal fade" tabindex="-1" id="booking-modal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Compra tu NFT</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form action="#">
-
-              <div class="row g-2">
-
-                <div class="col-sm-6">
-                  <div class="form-floating">
-
-                    <input id="email1" type="email" class="form-control" placeholder="Su direcion de e-mail">
-                    <label for="email1">Direccion de Email</label>
-                  </div>
-                </div>
-
-                <div class="col-sm-6">
-                  <div class="form-floating">
-
-                    <select id="select1" type="email" class="form-select">
-                      <option>T-rex, Beeple - $0.99</option>
-                      <option>Calvin, Pak - $1.99</option>
-                      <option>Sofia, trevor Jones - $2.99</option>
-                    </select>
-                    <label for="select1">Elija su NFTs</label>
-                  </div>
-
-                </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Comprar</button>
-          </div>
-
-
-        </div>
-
-      </div>
-      </div>
-    </section> <!-- Fin del codigo Modal ventas -->
-
-    <!-- codigo Carrusel
-    <section id="hero-carousel" class="carousel slide" data-bs-ride="carousel" >
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true"
-          aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-
-      <div class="carousel-inner">
-        <div class="carousel-item active c-item">
-          <img
-            src="https://images.unsplash.com/photo-1635237755468-5fba69c13f29?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            class="d-block w-100 c-img" alt="...">
-          <div class="carousel-caption top-0 mt-4">
-            <p class="fs-3 mt-5 text-uppercase">Descubre el mundo de los Nfts</p>
-            <h1 class="display-1 fw-bolder text-capitalize">Galeria de NFTs</h1>
-            <button class="btn btn-primary px-4 py-2 fs-5 mt-5" data-bs-toggle="modal"
-              data-bs-target="#booking-modal">Reserva tu NFT</button>
-          </div>
-        </div>
-
-
-        <div class="carousel-item c-item">
-          <img
-            src="https://images.unsplash.com/photo-1642525027649-00d7397a6d4a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            class="d-block w-100 c-img" alt="...">
-          <div class="carousel-caption top-0 mt-4">
-            <p class="fs-3 mt-5 text-uppercase">La temporada de los Nfts a llegado</p>
-            <h1 class="display-1 fw-bolder text-capitalize">cientos de NFTs disponibles</h1>
-            <button class="btn btn-primary px-4 py-2 fs-5 mt-5" data-bs-toggle="modal"
-              data-bs-target="#booking-modal">Reserva tu NFT</button>
-          </div>
-        </div>
-        <div class="carousel-item c-item">
-          <img
-            src="https://images.unsplash.com/photo-1652159043552-6c25eb2ea21d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            class="d-block w-100 c-img" alt="...">
-          <div class="carousel-caption top-0 mt-4">
-            <p class="fs-3 mt-5 text-uppercase">Elije tus NFTs</p>
-            <h1 class="display-1 fw-bolder text-capitalize">Compra ya tu NFTs</h1>
-            <button class="btn btn-primary px-4 py-2 fs-5 mt-5" data-bs-toggle="modal"
-              data-bs-target="#booking-modal">Reserva tu NFT</button>
-          </div>
-        </div>
-      </div>
-
-      <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-        <span class="visually-hidden">Anterior</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-        <span class="visually-hidden">Siguiente</span>
-      </button>
-
-    </section>  Fin del codigo Carrusel -->
-
     <!-- codigo tarjeta de Bienvenida -->
     <section class="overview">
       <div class="container h-100 d-flex align-items-center">
@@ -215,12 +109,9 @@
           </div>
         </nav>  <!--Fin buscador de Nfts-->
 
-
-            <div id="spinner" class="spinner"></div>
-            <div class="row cards-nfts"  id="card-poster">   
-          
-            </div>
-        </div>
+        <div id="spinner" class="spinner"></div>
+        <div class="row cards-nfts"  id="card-poster"></div>
+        
       </div>
 
     </section> <!-- Fin codigo Cards NFts -->
@@ -304,6 +195,7 @@
 
   <!-- codigo javascript propio -->
   <script type="module" src="../js/app.js"></script>
+  <script src="../js/components/home.js"></script>
  
   
 </body>
