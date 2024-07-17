@@ -30,14 +30,16 @@ document
       password,
     };
 
-    const users = JSON.parse(localStorage.getItem("users")) || [];
+    //guardar el usuario en el localStorage
+    // const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    const userExists = users.find((u) => u.email === email);
-
+    //   const userExists = users.find((u) => u.email === email);
+    /* 
     if (userExists) {
       errorMessage.textContent = "El email ya esta registrado";
       return;
     }
+       */
 
     const url = "http://localhost:8080/apiproyectofinal/usuarios";
 
@@ -50,9 +52,7 @@ document
     if (response.ok) {
       console.log("USUARIO CREADO ...");
 
-      //guardar el usuario en la base de datos (LocalStorage)
-      users.push(user);
-      localStorage.setItem("users", JSON.stringify(users));
+      localStorage.setItem("user", JSON.stringify(user));
       console.log(nombre, apellido, email, password);
 
       //redireccionar al home
@@ -61,5 +61,5 @@ document
       console.error("Error al crear el usuario ...");
     }
 
-    alert("Exitos!");
+    alert(`Bienvenido ${user.nombre} 👋`);
   });

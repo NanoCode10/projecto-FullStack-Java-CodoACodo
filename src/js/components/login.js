@@ -5,6 +5,7 @@ document
 
     const form = event.target;
     const email = form.email.value;
+
     const password = event.target.password.value;
     let user = {
       email,
@@ -27,9 +28,10 @@ document
 
       response.json().then((data) => {
         user = data;
+        const nombre = user.nombre;
         console.log(user);
         localStorage.setItem("user", JSON.stringify(user));
-        alert("EXITOS AL LOGIARSE");
+        alert(`Bienvenido ${nombre} 👋`);
 
         //redireccionar al home
         window.location.href = "./home.html";
@@ -39,7 +41,6 @@ document
       console.error("Error al logearse usuario ...");
     }
 
-
     //si el usuario no existe o la password no coincide
-    alert("No se encontro usuario registrado o la password no coicide!");
+    alert("No se encontro usuario registrado o la password no coincide!");
   });

@@ -45,16 +45,16 @@ export const displayNfts = (arrayNfts) => {
 // loadFavoriteModule.js
 export const loadFavoriteModule = async () => {
   const pathname = window.location.pathname;
-  console.log("Ruta actual:", pathname);
+  // console.log("Ruta actual:", pathname);
 
   try {
     if (pathname.includes("index.html")) {
       const module = await import("./favoriteLocalStorage.js");
-      console.log("Módulo favoriteLocalStorage cargado:", module);
+      //  console.log("Módulo favoriteLocalStorage cargado:", module);
       return module.favoritesIsLoad;
     } else if (pathname.includes("home.html")) {
       const module = await import("./favoriteMYSQL.js");
-      console.log("Módulo favoriteMYSQL cargado:", module);
+      //   console.log("Módulo favoriteMYSQL cargado:", module);
       return module.favoritesIsLoad;
     } else {
       throw new Error("Página no reconocida: " + pathname);
