@@ -1,3 +1,4 @@
+//FUNCION PARA MOSTRAR LOS NFTS EN EL HTML
 export const displayNfts = (arrayNfts) => {
   const cardPosterElement = document.getElementById("card-poster");
   cardPosterElement.innerHTML = ""; // Vaciar el contenedor antes de agregar nuevos elementos
@@ -18,11 +19,11 @@ export const displayNfts = (arrayNfts) => {
     const poster = ` 
         <div class="col-md mb-3 animate__animated animate__fadeInUp ">                 
           <div class="card card-nfts mx-auto" style="width: 18rem;" id="card">
-            <img src=${image} class="card-img-top" alt="cargando" style="height: 20rem;">
+            <img id="miImagen" src=${image} class="card-img-top" alt="cargando" style="height: 20rem;">
             <div class="card-body" data-product-id="${contrato}">
               <h5 class="card-title fs-5">${name}</h5>
               <h6 class="card-text card-subtitle fs-6">${subname}</h6>
-              <p class="card-text card-price fw-light">Precio: $ ${priceAleatorio}</p>
+              <p class="card-text card-price fw-light">Precio: ${priceAleatorio} U$D</p>
               <div class="d-flex justify-content-between">
                 <a class="btn float-end btn-favorite" id="btn-favorite">
                   <i class="bi bi-heart favorite" 
@@ -38,4 +39,28 @@ export const displayNfts = (arrayNfts) => {
 
     document.getElementById("card-poster").innerHTML += poster;
   });
+};
+
+//FUNCION PARA USAR LOCALSTORAGE O MYSQL
+// loadFavoriteModule.js
+export const loadFavoriteModule = async () => {
+  const pathname = window.location.pathname;
+  console.log("Ruta actual:", pathname);
+
+  try {
+    if (pathname.includes("index.html")) {
+      const module = await import("./favoriteLocalStorage.js");
+      console.log("Módulo favoriteLocalStorage cargado:", module);
+      return module.favoritesIsLoad;
+    } else if (pathname.includes("home.html")) {
+      const module = await import("./favoriteMYSQL.js");
+      console.log("Módulo favoriteMYSQL cargado:", module);
+      return module.favoritesIsLoad;
+    } else {
+      throw new Error("Página no reconocida: " + pathname);
+    }
+  } catch (error) {
+    console.error("Error al cargar el módulo:", error);
+    throw error;
+  }
 };

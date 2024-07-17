@@ -1,24 +1,33 @@
-import { fetchNFTData } from "..js/components/fetchNFTData.js";
+import { fetchNFTData } from "./components/fetchNFTData.js";
 
 import { btnUp } from "./components/btnUp.js";
 import { buscardorNfts } from "./components/buscardor.js";
-import { favoritesIsLoad } from "./components/favorite.js";
+import { loadFavoriteModule } from "./components/funciones.js";
 
-// Mostrar el spinner antes de hacer la llamada fetch
-document.getElementById("spinner").style.display = "block";
+/// Cargar y usar el módulo adecuado
+// Cargar y usar el módulo adecuado
+loadFavoriteModule()
+  .then((favoriteIsLoad) => {
+    if (!favoriteIsLoad) {
+      throw new Error("favoriteIsLoad no está definido.");
+    }
 
-// mi fechin de datos
-fetchNFTData()
-  .then((arrayNfts) => {
-    //buscador de NFTs
-    buscardorNfts(arrayNfts).then(() => {
-      //cargar el favorite
-
-      favoritesIsLoad();
-    });
+    // Hacer el fetching de datos
+    fetchNFTData()
+      .then((arrayNfts) => {
+        // Buscador de NFTs
+        return buscardorNfts(arrayNfts);
+      })
+      .then(() => {
+        // Cargar el favorite
+        favoriteIsLoad();
+      })
+      .catch((error) => {
+        console.error("Error en el procesamiento de NFTs:", error);
+      });
   })
   .catch((error) => {
-    console.error("Error en el procesamiento de NFTs:", error);
+    console.error("No se pudo cargar el módulo favorito:", error);
   });
 
 //captura boton para mostrar la lista de favoritos

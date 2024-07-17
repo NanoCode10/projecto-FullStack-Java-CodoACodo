@@ -1,6 +1,14 @@
-import { favoritesIsLoad } from "./favorite.js";
-import { displayNfts } from "./funciones.js";
+import { displayNfts, loadFavoriteModule } from "./funciones.js";
 
+// Cargar y usar el módulo adecuado
+loadFavoriteModule()
+  .then((favoriteIsLoad) => {
+    favoriteIsLoad();
+  })
+  .catch((error) => {
+    console.error("No se pudo cargar el módulo favorito:", error);
+  });
+  
 let arrayNftsGlobal = null;
 
 const searchInput = document.getElementById("searchInput");
